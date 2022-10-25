@@ -68,7 +68,6 @@ try:
     password_field.send_keys(args.password)
 
     login = driver.find_element(By.XPATH, '//*[@id="loginform"]/fieldset/input[2]')
-    wait.until(ready_to_fire)
     login.click()
 
     wait.until(
