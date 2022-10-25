@@ -18,13 +18,13 @@ positional arguments:
 
 options:
   -h, --help            show this help message and exit
-  --match-type {1,2}, -m {1,2}
-                        1 singles, 2 doubles
   --date DATE, -d DATE  date in MM/DD/YYYY
   --times START END, -t START END
                         times in ?H:mm XM
   --court COURT, -c COURT
                         court 1-8
+  --match-type {1,2}, -m {1,2}
+                        1 singles, 2 doubles (default: 2)
   --wait, --no-wait     debug flag to wait for registration time (default:
                         True)
   --submit, --no-submit
