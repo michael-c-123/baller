@@ -40,6 +40,5 @@ python3 browser_script.py \
 'password' \
 -d '01/01/2022' \
 -t '8:00 AM' '10:00 AM' \
--c 2 \
---no-close
+-c 2
 ```
