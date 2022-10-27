@@ -38,19 +38,20 @@ else:
 if not args_good:
     quit()
 
-def timestamp():
-    return '[{:%H:%M:%S}]'.format(datetime.datetime.now())
+def timestamp(text):
+    stamp = datetime.datetime.now().strftime('%H:%M:%S.%f')[:-3]
+    print(f'[{stamp}] {text}', flush=True)
 
 if args.wait:
     now = datetime.datetime.now()
     sleep = (READY_TIME - now).seconds
-    print(f'{timestamp()} WAITING FOR {str(datetime.timedelta(seconds=sleep))}', flush=True)
+    timestamp(f'WAITING FOR {str(datetime.timedelta(seconds=sleep))}')
     time.sleep(sleep)
 
 options = Options()
 options.headless = args.wait and args.submit and args.close
 try:
-    print(f'{timestamp()} LAUNCHING BROWSER', flush=True)
+    timestamp('LAUNCHING BROWSER')
     driver = webdriver.Chrome(options=options)
     wait = WebDriverWait(driver, 120)
 
@@ -75,10 +76,10 @@ try:
     )
 
     if args.wait:
-        print(f'{timestamp()} WAITING TO FIRE', flush=True)
+        timestamp('WAITING TO FIRE')
         ready_to_fire = lambda _: datetime.datetime.now() >= FIRE_TIME
         wait.until(ready_to_fire)
-    print(f'{timestamp()} FIRING', flush=True)
+    timestamp('FIRING')
     driver.get('https://www.10sportal.net/entity/scheduler/index.html')
 
     match_type = Select(
@@ -106,7 +107,7 @@ try:
     
     if args.submit:
         submit.click()
-    print(f'{timestamp()} DONE', flush=True)
+    timestamp('DONE')
 finally:
     if args.close and args.submit:
         driver.close()  
