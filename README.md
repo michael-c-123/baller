@@ -4,7 +4,10 @@ a tool to help us say "we ball"
 
 runs on selenium python using google chrome webdriver (chromium)
 
-put in PATH: https://sites.google.com/chromium.org/driver/
+```
+pip3 install selenium
+```
+then add executable to PATH: https://sites.google.com/chromium.org/driver/
 
 
 ## Usage
